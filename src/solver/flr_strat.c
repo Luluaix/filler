@@ -6,7 +6,7 @@
 /*   By: pdamoune <pdamoune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/22 14:43:32 by pdamoune          #+#    #+#             */
-/*   Updated: 2017/06/26 21:35:57 by pdamoune         ###   ########.fr       */
+/*   Updated: 2017/06/27 14:33:27 by pdamoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,41 +60,19 @@ int		flr_get_bits(t_data *data, int *next, int nb_bits)
 	return (-nb_bits);
 }
 
-int		flr_next_pos(t_data *data, int *next, int *score, int *current)
+void	flr_strat(t_data *data, int *current, int *next)
 {
-	int		score_nxt;
-	int		score_cur;
+	int			score_cur;
+	int			score_nxt;
 
-	score_nxt = flr_get_score(next, score, data->map_lines, data->map_col);
-	score_cur = flr_get_score(current, score, data->map_lines, data->map_col);
+	score_cur = 0;
+	score_nxt = flr_get_bits(data, next, score_cur);
+	score_cur = flr_get_bits(data, current, score_cur);
 	if (score_nxt < score_cur)
 	{
 		current[0] = next[0];
 		current[1] = next[1];
 		score_cur = score_nxt;
-		return (score_cur);
-	}
-	return (score_cur);
-}
-
-void	flr_strat(t_data *data, int *current, int *next)
-{
-	static int	score_cur;
-	static int	score[2];
-	int			score_nxt;
-
-	score[0] = data->pos;
-	score[1] = data->pos < data->map_col / 2 ? data->map_col : 0;
-	score_nxt = flr_get_bits(data, next, score_cur);
-	if (score_nxt < 0)
-	{
-		current[0] = next[0];
-		current[1] = next[1];
-		score_cur = score_nxt;
 		return ;
 	}
-	if (score_cur < 0)
-		return ;
-	else
-		score_cur = flr_next_pos(data, next, score, current);
 }

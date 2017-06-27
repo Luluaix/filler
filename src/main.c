@@ -6,7 +6,7 @@
 /*   By: pdamoune <pdamoune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 17:19:57 by pdamoune          #+#    #+#             */
-/*   Updated: 2017/06/26 21:30:02 by pdamoune         ###   ########.fr       */
+/*   Updated: 2017/06/27 14:09:16 by pdamoune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_display(__uint128_t *me, __uint128_t *him, int lines)
 		ft_printf("%@%+.*kb\n", fd3, v_data()->map_col, v_data()->both[i]);
 		i++;
 	}
-	ft_printf("%@\n\n", fd1);
-	ft_printf("%@\n\n", fd2);
-	ft_printf("%@\n\n", fd3);
+	ft_printf("%@%s", fd1, "\n\n\n\n\n\n");
+	ft_printf("%@%s", fd2, "\n\n\n\n\n\n");
+	ft_printf("%@%s", fd3, "\n\n\n\n\n\n");
 }
 
 int		main(void)
